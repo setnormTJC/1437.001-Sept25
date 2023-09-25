@@ -68,6 +68,8 @@ struct Point
 	}
 };
 
+//VERSION CONTROL
+
 void printPointsList(vector<Point> points)
 {
 	for (Point& point : points)
@@ -78,18 +80,10 @@ void printPointsList(vector<Point> points)
 
 int main()
 {
-	//Point p1{ 4, 17 };
-	//cout << p1.x << "\t" << p1.y << endl; 
-
-
-	//listOfPoints.push_back(p1);
-
-	//listOfPoints.push_back(Point{ -77, 1234 });
-
-	//printPointsList(listOfPoints);
 
 	ifstream inputFile{ "inputFile.txt" };
 
+	cout << "Hello world?" << endl;
 
 	if (!inputFile)
 	{
