@@ -4,8 +4,8 @@
 
 #include<vector>
  
-#include"Book.h"
-#include "Person.h"
+//#include"Book.h"
+//#include "Person.h"
 
 using namespace std;
 
@@ -68,7 +68,6 @@ struct Point
 	}
 };
 
-//VERSION CONTROL
 
 void printPointsList(vector<Point> points)
 {
@@ -78,40 +77,100 @@ void printPointsList(vector<Point> points)
 	}
 }
 
+
+//extern int someInt;
+
+void printStaticAndAutomaticVars()
+{
+	static int staticFunctionCallCount = 0;
+	int nonStaticVar = 0;
+
+	staticFunctionCallCount++;
+	nonStaticVar--;
+	
+	cout << "static var value: " << staticFunctionCallCount
+		<< "\tnonstatic (automatic) var value: " << nonStaticVar << endl;
+}
+
+class SomeClass
+{
+public:
+	static int objectCount;
+	int y;
+	static constexpr double PI = 3.14;
+
+	SomeClass()
+	{
+		objectCount++; 
+		y = -999; 
+	}
+};
+
+int SomeClass::objectCount = 0;
+
 int main()
 {
+	SomeClass scObject1; 
+	SomeClass scObject2;
+	SomeClass scObject3;
 
-	ifstream inputFile{ "inputFile.txt" };
+	cout << SomeClass::PI << endl; //I can access a (static) member var without making an object!
+	//static member variables are SHARED among class objects 
+	cout << SomeClass::objectCount << endl; 
 
-	cout << "Hello world?" << endl;
+	//printStaticAndAutomaticVars(); 
+	//printStaticAndAutomaticVars();
+	//printStaticAndAutomaticVars();
+	//printStaticAndAutomaticVars();
 
-	if (!inputFile)
-	{
-		cout << "FILE NOT FOUND!" << endl;
-	}
+	//variable lifetime and scope are similar but not the same
+	//if ()
+	//{
+	//	int a = 4; 
+	//}
 
-	//cin >> 
-	//	getline()
-	//int input; 
+	//cout << a << 
 
-	int numberFromFile; 
-	vector<Point> listOfPoints; //in C++ vector means an array that can change its size
 
-	while (!inputFile.eof())
-	{
-		int x, y; 
-		inputFile >> x >> y;
-		Point p{ x, y };
-		listOfPoints.push_back(p); 
-		//inputFile >> numberFromFile;
-		//cout << numberFromFile << endl; 
-	}
+	////int someArray[10] = { 1, 2, 3 };
+	////vector<int> listOfNums; 
 
-	printPointsList(listOfPoints);
-	//cout << input << endl; 
+
+
+	////int a = 5; 
+	////int a = 14; 
+
+	//cout << someInt << endl; 
+
+
+
+	//ifstream inputFile{ "inputFile.txt" };
+
+	//cout << "Hello world?" << endl;
+	//{
+	//	cout << "FILE NOT FOUND!" << endl;
+	//}
+
+	////cin >> 
+	////	getline()
+	////int input; 
+
+	//int numberFromFile; 
+	//vector<Point> listOfPoints; //in C++ vector means an array that can change its size
+
+	//while (!inputFile.eof())
+	//{
+	//	int x, y; 
+	//	inputFile >> x >> y;
+	//	Point p{ x, y };
+	//	listOfPoints.push_back(p); 
+	//	//inputFile >> numberFromFile;
+	//	//cout << numberFromFile << endl; 
+	//}
+
+	//printPointsList(listOfPoints);
+	////cout << input << endl; 
 	
-
-
 	//////cout << "Hello" << endl; //:: is the SCOPE RESOLUTION OPERATOR 
 	//////Declares (makes space in RAM for) a variable of type Queen named q1
 
